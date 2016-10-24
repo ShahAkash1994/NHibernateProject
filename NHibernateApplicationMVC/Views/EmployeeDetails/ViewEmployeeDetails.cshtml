@@ -1,0 +1,92 @@
+﻿
+@model NHibernateApplicationMVC.ViewModel.EmployeeViewModel
+
+@{
+    
+    ViewBag.Title = "ViewEmployeeDetails";
+}
+
+<h2>ViewEmployeeDetails</h2>
+
+<div class="row" style="padding-top:3%">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="color:#00a499">
+                <b> <u>Employee Details Form</u></b>
+            </div>
+            @using (Html.BeginForm("ViewEmployeeDetails", "EmployeeDetails", FormMethod.Post))
+            {
+                @Html.HiddenFor(Model=>Model.Id);
+               @Html.HiddenFor(Model => Model.BirthDate);
+                <div class="panel-body">
+                    <div>
+                        <div>
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Name)
+                                        <div class='ropdown-menu'>
+                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @disabled = "disabled" ,id="Name"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Address)
+                                        <div class='ropdown-menu'>
+                                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @disabled = "disabled",id="Address" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.BirthDate)
+                                        <div class='ropdown-menu'>
+                                            @Html.TextBoxFor(model => model.BirthDate, new { @class = "form-control", @disabled = "disabled",id="BirthDate" })
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.MobileNo)
+                                        <div class='ropdown-menu'>
+                                            @Html.TextBoxFor(model => model.MobileNo, new { @class = "form-control", @disabled = "disabled",id="MobileNo" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.BloodGroup)
+                                        <div class='ropdown-menu'>
+                                            @Html.TextBoxFor(model => model.BloodGroup, new { @class = "form-control", @disabled = "disabled",id="BloodGroup" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EmergencyNo)
+                                        <div class='ropdown-menu'>
+                                            @Html.TextBoxFor(model => model.EmergencyNo, new { @class = "form-control", @disabled = "disabled",id="EmergencyNo" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" id="btnEdit" class="btn btn-success" name="Command" value="Edit" onclick="click()">Edit</button>
+                            <button type="submit" id="btnSave" class="btn btn-success" name="submit" value="Save">Save</button>
+                            <button type="submit" id="btnDelete" class="btn btn-danger" name="submit" value="Delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    <script type="text/javascript">
+
+        $('#btnSave').hide();
+        $('#btnEdit').click(function() {
+            $('#Name').prop('disabled', false);
+            $('#Address').prop('disabled', false);
+            $('#MobileNo').prop('disabled', false);
+            $('#BloodGroup').prop('disabled', false);
+            $('#EmergencyNo').prop('disabled', false);
+            $('#btnSave').show();
+            $('#btnEdit').hide();
+        });
+
+    </script>
+
+}
